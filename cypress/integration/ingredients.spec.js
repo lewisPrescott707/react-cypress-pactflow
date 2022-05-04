@@ -1,18 +1,18 @@
 describe('Great British Bake Off', () => {
-    const url = '/ingredients/chocolate'
     before(() => {
-        cy.task('getIngredients', url).then((data) => {
-            console.log(data)
-            cy.intercept(`http://localhost:5000${url}`, (req) => {
-                req.reply(data)
-            }).as('cake')
-        })
+        cy.setupPact('bake-off-ui', 'ingredients-api')
+        cy.intercept(`http://localhost:5000/ingredients/chocolate`,
+        {
+          statusCode: 200,
+          body: ["sugar"],
+          headers: { 'access-control-allow-origin': '*' }
+        }).as('ingredients')
     })
 
     it('Cake ingredients', () => {
-        cy.visit(url)
+        cy.visit('/ingredients/chocolate')
         cy.get('button').click()
-        cy.wait('@cake')
+        cy.usePactWait('ingredients').its('response.statusCode').should('eq', 200)
         cy.contains('li', 'sugar').should('be.visible')
     })
 })
