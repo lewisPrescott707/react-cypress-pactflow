@@ -11,7 +11,7 @@ module.exports = (on) => {
       const result = axios.get(`${pactflow}/consumer/Fan_GBBO/version/0.0.3/stub${stubUrl}`,
         {
           headers: {
-            Authorization: 'Bearer mz0TQ06P5mEnUZfLO4BgSQ',
+            Authorization: 'Bearer hZyOhJLwkCFCKddqZS9nNQ',
             Accept: 'application/json'
           }
         }).then(response => { 
