@@ -2,7 +2,6 @@ describe('Great British Bake Off', () => {
     const url = '/ingredients/chocolate'
     before(() => {
         cy.task('getIngredients', url).then((data) => {
-            console.log(data)
             cy.intercept(`http://localhost:5000${url}`, (req) => {
                 req.reply(data)
             }).as('cake')
