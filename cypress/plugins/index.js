@@ -12,7 +12,7 @@ module.exports = (on) => {
         {
           headers: {
             Authorization: 'Bearer hZyOhJLwkCFCKddqZS9nNQ',
-            Accept: 'application/json'
+            Accept: "application/json; charset=UTF-8"
           }
         }).then(response => { 
           return response.data })
