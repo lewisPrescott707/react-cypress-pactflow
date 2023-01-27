@@ -12,8 +12,15 @@ This project is the supporting code for course [End to End Tests in Microservice
 ## Start App
 1. `npm start`
 
+
 ## Test
+
+### Unit & Contract
+1. `npm test`   
+Note: contracts generated to `pact/pacts` folder
+
+### End to End - Cypress
 Headless:
-1. `npm test`
+1. `npm run cy:run`
 Headed:
 1. `npm run cy:open`

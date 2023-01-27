@@ -1,11 +1,7 @@
 import logo from './cake.svg';
 import './App.css';
-import axios from "axios";
 import React from "react";
-
-const CAKE_URL = "/ingredients/chocolate";
-
-
+import { getCakeIngredients } from './api/ingredients.api';
 
 function App() {
   const [ingredients, setIngredients] = React.useState(null);
@@ -17,13 +13,8 @@ function App() {
   const getIngredients = (e) => {
     e.preventDefault()
 
-    axios.get(`${process.env.REACT_APP_API_URL}${CAKE_URL}`, {
-      headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
-        Accept: 'application/json'
-      }
-    })
-      .then((response) => {
+    getCakeIngredients({ url: process.env.REACT_APP_API_URL, port: 5000 })
+    .then((response) => {
         setIngredients(response.data)
       }).catch((error) => {
         console.log(error)
